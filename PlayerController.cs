@@ -8,6 +8,7 @@ private Rigidbody playerRb;
 public float jumpForce = 10;
 public float gravityModifier;
 public bool isOnGround = true;
+public bool gameOver= false;
 
 
 
@@ -34,6 +35,15 @@ public bool isOnGround = true;
     }
      private void OnCollisionEnter(Collision collision) 
         {
-        isOnGround = true;
+        
+        
+        if(collision.gameObject.CompareTag("Ground")){
+            isOnGround = true;
+
+        } else if(collision.gameObject.CompareTag("Obstacle")){
+            Debug.Log("Game Over");
+            gameOver = true;
+        }
+
         }
 }
